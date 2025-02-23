@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+        
+        body {
+            background-color: #FFC0CB;
+            text-align: center;
+            font-family: 'Comic Neue', cursive;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .message {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .button {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            background-color: #ff69b4;
+            color: white;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-family: 'Comic Neue', cursive;
+        }
+        .hidden {
+            display: none;
+        }
+        .final-message {
+            font-size: 24px;
+            font-weight: bold;
+            color: red;
+            animation: hearts 1s infinite;
+        }
+        @keyframes hearts {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="message">I am sorry</div>
+    <div class="buttons">
+        <button class="button" id="fine">It's fine</button>
+        <button class="button" id="notFine">It's not fine</button>
+    </div>
+    <div id="finalMessage" class="hidden final-message">❤️❤️❤️ Thank you so much cutiepie, I love you so much ❤️❤️❤️</div>
+
+    <script>
+        let fineBtn = document.getElementById("fine");
+        let notFineBtn = document.getElementById("notFine");
+        let finalMessage = document.getElementById("finalMessage");
+        let size = 20;
+        let clickCount = 0;
+        
+        notFineBtn.addEventListener("click", function() {
+            clickCount++;
+            size += 10;
+            fineBtn.style.fontSize = size + "px";
+            if (clickCount >= 7) {
+                notFineBtn.style.display = "none";
+            }
+        });
+        
+        fineBtn.addEventListener("click", function() {
+            document.querySelector(".buttons").style.display = "none";
+            finalMessage.classList.remove("hidden");
+        });
+    </script>
+</body>
+</html>
